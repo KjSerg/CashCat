@@ -18,6 +18,17 @@
     font-weight: 600;
     line-height: 124%;
 
+    &-timer{
+      padding: 1.4rem;
+      background: linear-gradient(134deg, #9494B6 -1.26%, #585872 76.47%);
+      color:  #FFF;
+      text-align: center;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 124%;
+    }
+
     .decor {
       position: absolute;
       top: 0;

@@ -1,0 +1,23 @@
+.button{
+  display: flex;
+  height: 4.5rem;
+  padding: 1.4rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 1rem;
+  background: linear-gradient(134deg, #9494B6 -1.26%, #585872 76.47%);
+  box-shadow: -4px -4px 16px 0px rgba(18, 18, 26, 0.24) inset, 4px 4px 16px 0px rgba(255, 255, 255, 0.16) inset;
+  color: #FFF;
+  text-align: center;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 124%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  &--blue{
+    background:  linear-gradient(134deg, #A6A1F5 -1.26%, #665EF6 76.47%);
+  }
+}

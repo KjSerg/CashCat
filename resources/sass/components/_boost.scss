@@ -1,0 +1,44 @@
+.boost {
+  &-list{
+    color: #FFF;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    li {
+      display: flex;
+      justify-content: space-between;
+      &:not(:last-child){
+        margin-bottom: 0.8rem;
+      }
+    }
+    strong{
+      padding-left: 1rem;
+      font-weight: 600;
+    }
+  }
+  &-form-quantity{
+    margin-bottom: 1.6rem;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 1.6rem;
+    color: #FFF;
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 115%;
+    .icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+  }
+}
