@@ -28,8 +28,11 @@ html, body {
 }
 
 .container{
-  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  min-height: 100%;
+  padding: 1.6rem 1.6rem 10rem;
 }
 
 main.content {
@@ -131,5 +134,21 @@ em, i {
 input, textarea {
   &.error {
     border-color: red !important;
+  }
+}
+
+.title, h1{
+  &:not(:last-child){
+    margin-bottom: 0.8rem;
+  }
+  color: #FFF;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 118%;
+}
+.subtitle{
+  &:not(:last-child){
+    margin-bottom: 0.8rem;
   }
 }
