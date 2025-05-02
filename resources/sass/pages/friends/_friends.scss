@@ -1,0 +1,45 @@
+.friends {
+  &-section {
+    .history-empty{
+      margin-bottom: auto;
+    }
+  }
+  &-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin-top: 2.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  &-link {
+    margin-bottom: 0.8rem;
+    padding: 1.2rem;
+    border-radius: 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(112, 111, 125, 0.20);
+    box-shadow: -4px -4px 16px 0px rgba(18, 18, 26, 0.18) inset, 4px 4px 16px 0px rgba(255, 255, 255, 0.10) inset;
+    backdrop-filter: blur(25px);
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 165%;
+
+    &__title {
+      color: rgba(255, 255, 255, 0.50);
+      font-size: 1.1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 132%;
+      text-transform: uppercase;
+    }
+
+    & > *:not(:last-child) {
+
+      margin-bottom: 0.8rem;
+    }
+  }
+}
