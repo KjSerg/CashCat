@@ -1,9 +1,10 @@
 .friends {
   &-section {
-    .history-empty{
+    .history-empty {
       margin-bottom: auto;
     }
   }
+
   &-container {
     display: flex;
     flex-direction: column;
@@ -42,4 +43,83 @@
       margin-bottom: 0.8rem;
     }
   }
+
+  &-table {
+    width: 100%;
+
+    &__bonus {
+      font-weight: 600;
+    }
+    &__rewards {
+      display: flex;
+      align-items: center;
+      .icon {
+        margin-right: 0.6rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        flex-shrink: 0;
+        flex-grow: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media (max-width: 350px) {
+          display: none;
+        }
+      }
+    }
+
+    &__column {
+      padding:  1rem 0.4rem;
+      width: 25%;
+      &:last-child{
+        padding-right: 1rem;
+      }
+      &:first-child {
+        width: 38%;
+        padding-left: 1rem;
+      }
+    }
+
+    &-row {
+      &:not(:last-child){
+        margin-bottom: 0.8rem;
+      }
+      width: 100%;
+      display: flex;
+      align-items: center;
+      border-radius: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(112, 111, 125, 0.20);
+      box-shadow: -4px -4px 16px 0px rgba(18, 18, 26, 0.18) inset, 4px 4px 16px 0px rgba(255, 255, 255, 0.10) inset;
+      backdrop-filter: blur(25px);
+      color: #FFF;
+      font-size: 1.1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 165%;
+    }
+
+    &-head {
+      width: 100%;
+      display: flex;
+      padding-bottom: 0.8rem;
+
+      &__column {
+        padding:  0 0.4rem;
+        width: 25%;
+        &:last-child{
+          padding-right: 1rem;
+        }
+        &:first-child {
+          width: 38%;
+          padding-left: 1rem;
+        }
+      }
+    }
+    &-body{
+      max-height: 34vh;
+      overflow: auto;
+    }
+  }
 }
+
