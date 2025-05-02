@@ -27,7 +27,7 @@
                             <div class="wallet-head-item__title">22.26</div>
                         </div>
                     </div>
-                    <a href="#" class="wallet-head-item__button button">
+                    <a href="#withdraw-ton" class="wallet-head-item__button button fancybox">
                         Withdraw
                     </a>
                 </div>
@@ -39,7 +39,7 @@
                             <div class="wallet-head-item__title">12 725</div>
                         </div>
                     </div>
-                    <a href="#" class="wallet-head-item__button button">
+                    <a href="#withdraw-not" class="wallet-head-item__button button fancybox">
                         Withdraw
                     </a>
                 </div>
@@ -583,5 +583,65 @@
     </ul>
 </nav>
 <script src="assets/js/app.js"></script>
+<div id="withdraw-not" class="modal modal-withdraw withdraw">
+    <div class="modal-withdraw__title">
+        Enter your personal NOT address
+    </div>
+    <div class="modal-withdraw__text">
+        <p>
+            This amount will be sent to the NOT compatible wallet address. Do not use a CEX address that requires a Memo. <span style="color: #fff;">Minimum send amount is 50 NOT</span>
+        </p>
+    </div>
+    <form  class="modal-withdraw-form form">
+        <label>
+            <input type="text" placeholder="Your NOT (TON Blockchain) address">
+        </label>
+        <label>
+            <input type="text" class="" placeholder="Amount">
+        </label>
+        <ul class="boost-list">
+            <li>Network fee: <strong>50 NOT</strong></li>
+            <li>Receive amount: <strong>0 NOT</strong></li>
+        </ul>
+        <div class="modal-controls">
+            <a href="#" class="button ">
+                Cancel
+            </a>
+            <button type="submit"  class="button button--blue">
+                Send
+            </button>
+        </div>
+    </form>
+</div>
+<div id="withdraw-ton" class="modal modal-withdraw withdraw">
+    <div class="modal-withdraw__title">
+        Enter your personal TON address
+    </div>
+    <div class="modal-withdraw__text">
+        <p>
+            This amount will be sent to the TON compatible wallet address. Do not use a CEX address that requires a Memo. <span style="color: #fff;"> Minimum send amount is 5 TON</span>
+        </p>
+    </div>
+    <form  class="modal-withdraw-form form">
+        <label>
+            <input type="text" placeholder="Your NOT (TON Blockchain) address">
+        </label>
+        <label>
+            <input type="text" class="error" placeholder="Amount">
+        </label>
+        <ul class="boost-list">
+            <li>Network fee: <strong>0.5 NOT</strong></li>
+            <li>Receive amount: <strong>0 NOT</strong></li>
+        </ul>
+        <div class="modal-controls">
+            <a href="#" class="button ">
+                Cancel
+            </a>
+            <button type="submit" disabled class="button button--blue">
+                Send
+            </button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

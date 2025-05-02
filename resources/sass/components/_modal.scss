@@ -68,6 +68,27 @@
       height: 5.6rem;
     }
   }
+
+  &-withdraw{
+    &-form{
+      width: 100%;
+      .boost-list{
+        margin-top: 1.6rem;
+        margin-bottom: 1.6rem;
+      }
+    }
+    &__text{
+      margin-bottom: 0.8rem;
+    }
+    &__title{
+      margin-bottom: 0.8rem;
+      color: #FFF;
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 118%;
+    }
+  }
 }
 
 .fancybox-content{
