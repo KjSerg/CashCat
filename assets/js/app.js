@@ -20173,6 +20173,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/_helpers */ "./resources/js/components/utils/_helpers.js");
 /* harmony import */ var _forms_number_input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./forms/_number-input */ "./resources/js/components/forms/_number-input.js");
 /* harmony import */ var _plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../plugins/_fancybox-init */ "./resources/js/plugins/_fancybox-init.js");
+/* harmony import */ var _ui_copy_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui/_copy-link */ "./resources/js/components/ui/_copy-link.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -20180,6 +20181,7 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 
 
 
@@ -20210,6 +20212,18 @@ var Application = /*#__PURE__*/function () {
       });
     }
   }, {
+    key: "showQR",
+    value: function showQR() {
+      this.$doc.on('click', '.order-qr__button', function (e) {
+        e.preventDefault();
+        var $t = $(this);
+        var $modal = $t.closest('.modal-order');
+        $t.hide();
+        $modal.find('.order-link-container').slideDown();
+        $modal.find('.order-qr').addClass('active');
+      });
+    }
+  }, {
     key: "initComponents",
     value: function initComponents() {
       var t = this;
@@ -20217,6 +20231,8 @@ var Application = /*#__PURE__*/function () {
         (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.hidePreloader)();
         (0,_forms_number_input__WEBPACK_IMPORTED_MODULE_1__.numberInput)();
         (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_2__.fancyboxInit)();
+        (0,_ui_copy_link__WEBPACK_IMPORTED_MODULE_3__.copyLink)();
+        t.showQR();
       });
     }
   }]);
@@ -20308,6 +20324,35 @@ var numberInput = function numberInput() {
     var val = Number($i.val());
     val = isNaN(val) ? 1 : val;
     $i.val(val > 2 ? val - 1 : 1);
+  });
+};
+
+/***/ }),
+
+/***/ "./resources/js/components/ui/_copy-link.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/ui/_copy-link.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   copyLink: () => (/* binding */ copyLink)
+/* harmony export */ });
+/* harmony import */ var _utils_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/_helpers */ "./resources/js/components/utils/_helpers.js");
+/* harmony import */ var _plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../plugins/_fancybox-init */ "./resources/js/plugins/_fancybox-init.js");
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+
+var copyLink = function copyLink() {
+  $(document).on('click', '.copy-button-js', function (e) {
+    e.preventDefault();
+    var $this = $(this);
+    var text = $this.attr('data-copy');
+    if (text === undefined) text = $this.attr('href');
+    (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.copyToClipboard)(text);
+    (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_1__.showMsg)('copied');
   });
 };
 
@@ -20495,7 +20540,8 @@ function moveToElement($el) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   fancyboxInit: () => (/* binding */ fancyboxInit)
+/* harmony export */   fancyboxInit: () => (/* binding */ fancyboxInit),
+/* harmony export */   showMsg: () => (/* binding */ showMsg)
 /* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
@@ -20518,13 +20564,22 @@ var fancyboxInit = function fancyboxInit() {
     if (href === undefined) return;
     var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).find(href);
     if ($el.length === 0) return;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.open($el);
+    console.log($el);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.open($el, {
+      touch: false
+    });
   });
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.close-fancybox-modal', function (e) {
     e.preventDefault();
     jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.close();
   });
 };
+function showMsg($msg) {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.open($msg);
+  setTimeout(function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.close();
+  }, 3000);
+}
 
 /***/ }),
 

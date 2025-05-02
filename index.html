@@ -294,12 +294,101 @@
             <a href="#" class="button">
                 Cancel
             </a>
-            <button type="submit" class="button button--blue">
+            <a href="#order-details" class="button button--blue fancybox">
+                Add
+            </a>
+            <button type="submit" disabled class="button button--blue">
                 Add
             </button>
         </div>
     </form>
 
 </div>
+<div id="order-details" class="modal modal-order order">
+    <div class="order__title">
+        Order details
+    </div>
+    <div class="modal-order-container">
+        <ul class="boost-list">
+            <li>CashCat power: <strong>10.00 TON/DAY</strong></li>
+            <li>Rent period: <strong>60 days</strong></li>
+            <li>Total profit: <strong>≈200.00 TON</strong></li>
+            <li>Daily profit: <strong>≈3.33 TON</strong></li>
+            <li>Price: <strong>100.00 TON</strong></li>
+        </ul>
+        <div class="order-details">
+            <div class="order-details__title">Payment</div>
+            <div class="order-details__text">
+                <p>
+                    Please ensure that you are sending only TON (TON Blockchain) to the provided deposit address.
+                    Sending any other type of cryptocurrency or asset to this address will result in a loss of those
+                    funds, as they cannot be recovered.
+                </p>
+            </div>
+        </div>
+        <div class="order-link">
+            <div class="order-qr">
+                <img src="img/qr.jpg" alt="">
+                <a href="#" class="order-qr__button button button--blue">
+                    Show address
+                </a>
+            </div>
+            <div class="order-link__title">100 TON</div>
+            <div class="order-link__subtitle">Send to this address</div>
+            <div class="order-link-container" style="display:none;">
+                <input type="text" readonly class="order-link__input" value="https://t.me/joinchat/AAAAAE3kRANDOM12345">
+                <a href="https://t.me/joinchat/AAAAAE3kRANDOM12345" class="order-link__button copy-button-js">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+  <path d="M14.7084 12.5542H12.7192C11.0875 12.5542 9.75837 11.2342 9.75837 9.59341V7.60425C9.75837 7.22841 9.45587 6.91675 9.07087 6.91675H6.16504C4.04754 6.91675 2.33337 8.29175 2.33337 10.7484V16.8351C2.33337 19.2917 4.04754 20.6667 6.16504 20.6667H11.5642C13.6817 20.6667 15.3959 19.2917 15.3959 16.8351V13.2417C15.3959 12.8567 15.0842 12.5542 14.7084 12.5542Z"
+        fill="white"/>
+  <path d="M16.8349 2.33325H15.0291H14.0299H11.4358C9.36411 2.33325 7.68661 3.65325 7.61328 6.00909C7.66828 6.00909 7.71411 5.99992 7.76911 5.99992H10.3633H11.3624H13.1683C15.2858 5.99992 16.9999 7.37492 16.9999 9.83159V11.6374V14.1216V15.9274C16.9999 15.9824 16.9908 16.0283 16.9908 16.0741C19.0349 16.0099 20.6666 14.6533 20.6666 12.2608V10.4549V7.97075V6.16492C20.6666 3.70825 18.9524 2.33325 16.8349 2.33325Z"
+        fill="white"/>
+  <path d="M11.4817 7.05418C11.1975 6.77002 10.7117 6.96252 10.7117 7.35668V9.75835C10.7117 10.7667 11.5642 11.5917 12.6092 11.5917C13.26 11.6008 14.1675 11.6008 14.9467 11.6008C15.3408 11.6008 15.5425 11.1425 15.2675 10.8675C14.2683 9.86835 12.49 8.08085 11.4817 7.05418Z"
+        fill="white"/>
+</svg>
+                </a>
+            </div>
+        </div>
+        <div class="order-details">
+            <div class="order-details__title">Awaiting payment</div>
+            <div class="order-details__text">
+                <p>
+                    Please note that the procedure for confirming a deposit takes 15 minutes on average. If the amount
+                    sent by you is less than the minimum amount for a deposit with this payment system, then such a
+                    payment will be considered as a donation.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-status modal-successful" id="successful">
+    <div class="modal-status__icon">
+        <img src="img/bcheck.png" alt="">
+    </div>
+    <div class="modal-status__title">
+        Successful operation
+    </div>
+    <a href="#" class="modal-status__button button button--blue close-fancybox-modal">
+        Ok
+    </a>
+</div>
+<div class="modal modal-status modal-successful" id="failure">
+    <div class="modal-status__icon">
+        <img src="img/bcross.png" alt="">
+    </div>
+    <div class="modal-status__title">
+        Failure
+    </div>
+    <a href="#" class="modal-status__button button button--blue close-fancybox-modal">
+        Ok
+    </a>
+</div>
+<script>
+    setTimeout(function (){
+        $.fancybox.open($('#successful'));
+        $.fancybox.open($('#failure'));
+    }, 2000)
+
+</script>
 </body>
 </html>

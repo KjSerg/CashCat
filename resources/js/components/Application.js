@@ -1,6 +1,7 @@
 import {detectBrowser, hidePreloader, isHorizontal, isMobile, showPreloader} from "./utils/_helpers";
 import {numberInput} from "./forms/_number-input";
 import {fancyboxInit, showNotices} from "../plugins/_fancybox-init";
+import {copyLink} from "./ui/_copy-link";
 
 export default class Application {
     constructor() {
@@ -25,6 +26,18 @@ export default class Application {
         });
     }
 
+    showQR(){
+
+        this.$doc.on('click', '.order-qr__button', function (e){
+            e.preventDefault();
+            const $t = $(this);
+            const $modal = $t.closest('.modal-order')
+            $t.hide();
+            $modal.find('.order-link-container').slideDown();
+            $modal.find('.order-qr').addClass('active');
+        });
+    }
+
 
     initComponents() {
         let t = this;
@@ -32,6 +45,8 @@ export default class Application {
             hidePreloader();
             numberInput();
             fancyboxInit();
+            copyLink();
+            t.showQR();
         });
 
     }

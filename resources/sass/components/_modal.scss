@@ -7,6 +7,16 @@
   max-width: 34.3rem;
   padding: 1.6rem;
 
+  &-order{
+    max-width: 45rem;
+    padding-right: 0.6rem;
+    &-container{
+      padding-right: 1rem;
+      max-height: 80vh;
+      overflow: auto;
+    }
+  }
+
   &-controls {
     margin-top: 1.6rem;
     display: flex;
@@ -35,4 +45,35 @@
     font-weight: 600;
     line-height: 118%;
   }
+
+  &-status{
+    text-align: center;
+    &__button{
+      width: 100%;
+    }
+    &__title{
+      margin-bottom: 1.6rem;
+      color: #FFF;
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 118%;
+    }
+    &__icon{
+      margin: auto auto 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 5.6rem;
+      height: 5.6rem;
+    }
+  }
+}
+
+.fancybox-content{
+  border-radius: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #13131F;
+  width: 100%;
+  padding: 1.6rem;
 }
