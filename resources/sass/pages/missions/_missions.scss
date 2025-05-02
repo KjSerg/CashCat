@@ -3,6 +3,7 @@
     position: relative;
     overflow: hidden;
     &__decor{
+      pointer-events: none;
       top: 5rem;
       left: -4rem;
       position: absolute;

@@ -38,6 +38,22 @@ export default class Application {
         });
     }
 
+    historyTableBodySetHeight() {
+        $(window).on('load resize', function (){
+            const $head = $(document).find('.wallet-head');
+            const $title = $(document).find('.history__title');
+            const $headTable = $(document).find('.history-table-head');
+            const $body = $(document).find('.history-table-body');
+            const headHeight = $head.outerHeight(true);
+            const titleHeight = $title.outerHeight(true);
+            const headTableHeight = $headTable.outerHeight(true);
+            const windowHeight = $(window).height();
+            const navHeight = 180;
+            const bodyHeight = windowHeight - (headHeight + titleHeight + headTableHeight +navHeight);
+            $body.height(bodyHeight);
+        });
+    }
+
 
     initComponents() {
         let t = this;
@@ -47,6 +63,7 @@ export default class Application {
             fancyboxInit();
             copyLink();
             t.showQR();
+            t.historyTableBodySetHeight();
         });
 
     }
