@@ -20217,8 +20217,8 @@ var Application = /*#__PURE__*/function () {
       this.$doc.on('click', '.order-qr__button', function (e) {
         e.preventDefault();
         var $t = $(this);
-        var $modal = $t.closest('.modal-order');
-        $t.hide();
+        var $modal = $t.closest('.modal');
+        $t.slideUp();
         $modal.find('.order-link-container').slideDown();
         $modal.find('.order-qr').addClass('active');
       });
@@ -20227,10 +20227,11 @@ var Application = /*#__PURE__*/function () {
     key: "historyTableBodySetHeight",
     value: function historyTableBodySetHeight() {
       $(window).on('load resize', function () {
+        var $body = $(document).find('.history-table-body');
+        if ($body.length === 0) return;
         var $head = $(document).find('.wallet-head');
         var $title = $(document).find('.history__title');
         var $headTable = $(document).find('.history-table-head');
-        var $body = $(document).find('.history-table-body');
         var headHeight = $head.outerHeight(true);
         var titleHeight = $title.outerHeight(true);
         var headTableHeight = $headTable.outerHeight(true);
@@ -20241,16 +20242,39 @@ var Application = /*#__PURE__*/function () {
       });
     }
   }, {
+    key: "friendsTableBodySetHeight",
+    value: function friendsTableBodySetHeight() {
+      $(window).on('load resize', function () {
+        var $body = $(document).find('.friends-table-body');
+        if ($body.length === 0) return;
+        var $head = $(document).find('.friends-link');
+        var $boxes = $(document).find('.box');
+        var $title = $(document).find('.friends__title');
+        var headHeight = $head.outerHeight(true);
+        var titleHeight = $title.outerHeight(true);
+        var boxesHeight = 0;
+        $boxes.each(function () {
+          boxesHeight += $(this).outerHeight(true);
+        });
+        console.log(boxesHeight);
+        var windowHeight = $(window).height();
+        var navHeight = 180;
+        var bodyHeight = windowHeight - (headHeight + titleHeight + boxesHeight + navHeight);
+        $body.css('max-height', bodyHeight);
+      });
+    }
+  }, {
     key: "initComponents",
     value: function initComponents() {
       var t = this;
+      t.historyTableBodySetHeight();
+      t.friendsTableBodySetHeight();
       this.$doc.ready(function () {
         (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.hidePreloader)();
         (0,_forms_number_input__WEBPACK_IMPORTED_MODULE_1__.numberInput)();
         (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_2__.fancyboxInit)();
         (0,_ui_copy_link__WEBPACK_IMPORTED_MODULE_3__.copyLink)();
         t.showQR();
-        t.historyTableBodySetHeight();
       });
     }
   }]);

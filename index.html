@@ -63,7 +63,7 @@
                     Next claim:
                     <span id="timer">01:00</span>
                 </div>
-                <a href="#" class="home__control" id="timer-button" onclick="startTimer()">
+                <a href="#" class="home__control" id="timer-button">
                     Claim
                     <span class="icon"><img src="img/Claim.svg" alt=""></span>
                     <span class="decor">Claim <span class="icon"><img src="img/Claim.svg" alt=""></span></span>
@@ -228,45 +228,6 @@
         </li>
     </ul>
 </nav>
-<script>
-    var secondsDefaultValue = 60;
-    var seconds = 60;
-    var interval;
-    var timerContainer = document.getElementById('timer-container');
-    var timerButton = document.getElementById('timer-button');
-    var timer = document.getElementById('timer');
-
-    function startTimer() {
-        timerContainer.classList.remove('hidden');
-        timerButton.classList.add('hidden');
-        interval = setInterval(timerTick, 1000);
-    }
-
-    function timerTick() {
-        seconds = seconds - 1;
-        if (seconds <= 0) {
-            clearInterval(interval);
-            finisTimer();
-        }
-        setTimerValue(seconds);
-    }
-
-    function setTimerValue(seconds) {
-        timer.innerText = secondsToTime(seconds);
-    }
-
-    function secondsToTime(seconds) {
-        const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
-        const secs = (seconds % 60).toString().padStart(2, '0');
-        return `${minutes}:${secs}`;
-    }
-
-    function finisTimer() {
-        seconds = secondsDefaultValue;
-        timerContainer.classList.add('hidden');
-        timerButton.classList.remove('hidden');
-    }
-</script>
 <script src="assets/js/app.js"></script>
 <div id="boost-modal" class="modal modal-boost boost">
     <div class="modal__title">CashCat</div>
@@ -327,12 +288,12 @@
             </div>
         </div>
         <div class="order-link">
-            <div class="order-qr">
+            <div class="order-qr" id="order-qr">
                 <img src="img/qr.jpg" alt="">
-                <a href="#" class="order-qr__button button button--blue">
-                    Show address
-                </a>
             </div>
+            <a href="#order-qr" class="order-qr__button button button--blue">
+                Show address
+            </a>
             <div class="order-link__title">100 TON</div>
             <div class="order-link__subtitle">Send to this address</div>
             <div class="order-link-container" style="display:none;">
@@ -389,6 +350,60 @@
         $.fancybox.open($('#failure'));
     }, 2000)
 
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var secondsDefaultValue = 60;
+        var seconds = 60;
+        var interval;
+        var timerContainer = document.getElementById('timer-container');
+        var timerButton = document.getElementById('timer-button');
+        var timer = document.getElementById('timer');
+
+        function startTimer() {
+            if (!interval) {
+                timerContainer.classList.remove('hidden');
+                timerButton.classList.add('hidden');
+                interval = setInterval(timerTick, 1000);
+            }
+        }
+
+        timerButton.addEventListener('touchstart', function (e) {
+            e.preventDefault();
+            startTimer();
+        });
+
+        timerButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            startTimer();
+        });
+
+        function timerTick() {
+            seconds = seconds - 1;
+            if (seconds <= 0) {
+                clearInterval(interval);
+                interval = null;
+                finisTimer();
+            }
+            setTimerValue(seconds);
+        }
+
+        function setTimerValue(seconds) {
+            timer.innerText = secondsToTime(seconds);
+        }
+
+        function secondsToTime(seconds) {
+            const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
+            const secs = (seconds % 60).toString().padStart(2, '0');
+            return `${minutes}:${secs}`;
+        }
+
+        function finisTimer() {
+            seconds = secondsDefaultValue;
+            timerContainer.classList.add('hidden');
+            timerButton.classList.remove('hidden');
+        }
+    });
 </script>
 </body>
 </html>

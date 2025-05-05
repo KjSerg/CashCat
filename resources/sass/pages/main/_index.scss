@@ -242,3 +242,9 @@
     background: linear-gradient(134deg, #A6A1F5 -1.26%, #665EF6 76.47%);
   }
 }
+
+#timer-button {
+  touch-action: manipulation; /* Вимикає затримку для жестів */
+  cursor: pointer; /* Покращує взаємодію */
+  -webkit-tap-highlight-color: transparent; /* Прибирає підсвітку при натисканні */
+}

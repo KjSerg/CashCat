@@ -43,12 +43,8 @@
     overflow: hidden;
 
     &__button {
-      width: calc(100% - 1rem);
-      position: absolute;
-      z-index: 1;
-      left: 50%;
-      top: 50%;
-      transform: translateY(-50%) translateX(-50%);
+      margin-bottom: 2rem;
+      transition: none!important;
     }
 
     &:after {
